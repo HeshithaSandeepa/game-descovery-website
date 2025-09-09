@@ -3,12 +3,13 @@ import useGames from "../hooks/useGames"
 
 
 const GameGrid = () => {
-  //custom hook
+  //custom hook-same as useState
   const { games, error } = useGames();
 
 
   return (
     <>
+      {/* chakra UI Text component for error message */}
       {error && <Text>{error}</Text>}
       <ul>
         {
