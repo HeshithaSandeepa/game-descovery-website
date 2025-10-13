@@ -12,7 +12,7 @@ interface PlatformIconProps {
   platforms: Platform[];
 }
 const PlatformIconsList = ({ platforms }: PlatformIconProps) => {
-  // icon type define =  Record<string, ComponentType<IconBaseProps>>
+  // ic on type define =  Record<string, ComponentType<IconBaseProps>>
   const iconsMap: { [key: string]: IconType } = {
     //key:sting
     pc: FaWindows,

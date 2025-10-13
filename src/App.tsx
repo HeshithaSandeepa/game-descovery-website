@@ -19,7 +19,7 @@ function App() {
           Sidebar
         </GridItem>
 
-        <GridItem area="main" bg="purple">
+        <GridItem area="main">
           <GameGrid />
         </GridItem>
 
