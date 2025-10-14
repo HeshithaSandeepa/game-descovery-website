@@ -6,6 +6,7 @@ import { BsGlobe } from 'react-icons/bs';
 import { HStack, Icon } from '@chakra-ui/react'
 import { type Platform } from '../hooks/useGames'
 import type { IconType } from 'react-icons';
+import React from 'react';
 
 
 interface PlatformIconProps {
@@ -28,20 +29,13 @@ const PlatformIconsList = ({ platforms }: PlatformIconProps) => {
     web: BsGlobe
   }
   return (
-    // <HStack gap={2}>
-    //   {platforms.map((platform) => (
-    //     <>
-    //       {Object.entries(iconsMap).map(([key, Icon]) =>
-    //         platform.slug === key ? <Icon key={key} /> : null
-    //       )}
-    //     </>
-    //   ))}
-    // </HStack>
     <HStack gap={2}>
-      {platforms.map((platform) => {
-        const IconComponent = iconsMap[platform.slug];
-        return IconComponent ? <Icon key={platform.id} as={IconComponent} /> : null;
-      })}
+      {platforms.map((platform) => (
+        Object.entries(iconsMap).map(([key, Icon]) =>
+          platform.slug === key ? <Icon key={key} /> : null
+        )
+      ))
+      }
     </HStack>
   );
 }
