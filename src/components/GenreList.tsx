@@ -3,11 +3,11 @@
 import useGenre from "../hooks/useGenre";
 
 const GenreList = () => {
-  const { genre } = useGenre();
+  const { data } = useGenre();
 
   return (
     <ul>
-      {genre.map((g) => (
+      {data.map((g) => (
         <li key={g.id}>{g.name}</li>
       ))
       }

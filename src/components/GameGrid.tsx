@@ -6,11 +6,10 @@ import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
   //custom hook-same as useState
-  const { games, error, loading } = useGames();
+  const { data, error, loading } = useGames();
 
   //skeletons array
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
 
   return (
     <>
@@ -25,7 +24,7 @@ const GameGrid = () => {
           <GameCardSkeleton key={skeleton} />
         ))}
         {
-          games.map((game) => (
+          data.map((game) => (
             <GameCard key={game.id} game={game} />
           ))
         }
