@@ -1,8 +1,17 @@
-import React from 'react'
+// for side panel  ex: youtube genre list
+
+import useGenre from "../hooks/useGenre";
 
 const GenreList = () => {
+  const { genre } = useGenre();
+
   return (
-    <div>GenreList</div>
+    <ul>
+      {genre.map((g) => (
+        <li key={g.id}>{g.name}</li>
+      ))
+      }
+    </ul>
   )
 }
 
