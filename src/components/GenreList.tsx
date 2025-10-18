@@ -1,10 +1,14 @@
 // for side panel  ex: youtube genre list
 
-import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
-import useGenre from "../hooks/useGenre";
+import { Button, HStack, Image, List, ListItem, Spinner } from "@chakra-ui/react";
+import useGenre, { type Genre } from "../hooks/useGenre";
 import cropImageUrl from "../services/image-url";
 
-const GenreList = () => {
+interface GenreListProps {
+  onSelectedGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectedGenre }: GenreListProps) => {
   const { data, loading, error } = useGenre();
 
   if (error) return null;
@@ -19,9 +23,9 @@ const GenreList = () => {
               src={cropImageUrl(g.image_background)}
               borderRadius={8}
             />
-            <Text
-              fontSize={"lg"}
-            >{g.name}</Text>
+            <Button
+              onClick={() => onSelectedGenre(g)}
+              variant={"ghost"} fontSize={"lg"}>{g.name}</Button>
           </HStack>
 
         </ListItem>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+import { CanceledError, type AxiosRequestConfig } from "axios";
 
 
 export interface FetchResponses<T> {
@@ -11,7 +11,7 @@ export interface FetchResponses<T> {
 
 }
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: React.DependencyList) => {
 
   //get Game type array
   const [data, setData] = useState<T[]>([]);
@@ -26,7 +26,7 @@ const useData = <T>(endpoint: string) => {
     //abort controller to cancel request
     const controller = new AbortController();
     //add response type(Generic) to axios get method
-    apiClient.get<FetchResponses<T>>(endpoint, { signal: controller.signal })
+    apiClient.get<FetchResponses<T>>(endpoint, { signal: controller.signal, ...requestConfig })
       .then(res => {
         setData(res.data.results)
         setLoading(false);
@@ -40,7 +40,9 @@ const useData = <T>(endpoint: string) => {
       })
     //abort request
     return () => controller.abort();
-  }, [])
+  },
+    deps ? [...deps] : []
+  )
   //for use games and error return values
   return { data, error, loading }
 };
