@@ -1,11 +1,18 @@
-import { HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/react.svg";
+import { Heading, HStack } from "@chakra-ui/react";
+import PulsingText from "./ui/PulsingText";
 
 const NavBar = () => {
   return (
     <>
-      <HStack>
-        <Image src={logo} boxSize="60px" />
+      <HStack padding={"20px"}>
+        <Heading
+          as="h1"
+          fontSize={{ base: "3x1", md: "4xl" }}
+          color="white"
+          letterSpacing="widest"
+        >
+          <PulsingText />
+        </Heading>
       </HStack>
     </>
   )
