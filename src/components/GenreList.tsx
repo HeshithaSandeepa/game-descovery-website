@@ -6,9 +6,10 @@ import cropImageUrl from "../services/image-url";
 
 interface GenreListProps {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectedGenre }: GenreListProps) => {
+const GenreList = ({ onSelectedGenre, selectedGenre }: GenreListProps) => {
   const { data, loading, error } = useGenre();
 
   if (error) return null;
@@ -24,8 +25,11 @@ const GenreList = ({ onSelectedGenre }: GenreListProps) => {
               borderRadius={8}
             />
             <Button
-              onClick={() => onSelectedGenre(g)}
-              variant={"ghost"} fontSize={"lg"}>{g.name}</Button>
+              fontWeight={g.id === selectedGenre?.id ? "bold" : "normal"}
+              fontSize={g.id === selectedGenre?.id ? "xl" : "medium"}
+              onClick={
+                () => { onSelectedGenre(g) }}
+              variant={"ghost"} >{g.name}</Button>
           </HStack>
 
         </ListItem>
