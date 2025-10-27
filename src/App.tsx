@@ -16,7 +16,12 @@ function App() {
       <Grid templateAreas={{
         base: `"nav" "main" "footer"`,
         lg: `"nav nav" "aside main" "footer footer"`
-      }}>
+      }}
+        templateColumns={{
+          base: '1fr', // base (mobile) වලදී සම්පූර්ණ පළල (1 fraction)
+          lg: '250px 1fr' // lg (laptop/desktop)  aside :250px, main other all width(1 fraction)
+        }}
+      >
 
         <GridItem
           area="nav"
@@ -47,7 +52,7 @@ function App() {
             onSelectedGenre={(genre: Genre) => setSelectedGenre(genre)} selectedGenre={selectedGenre} />
         </GridItem>
 
-        <GridItem area="main" paddingY={5}>
+        <GridItem area="main" paddingY={5} w={"full"}>
           <PlatformSelector />
           <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
