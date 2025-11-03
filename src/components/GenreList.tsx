@@ -15,7 +15,9 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: GenreListProps) => {
   if (error) return null;
   if (loading) return <Spinner />
   return (
-    <List.Root listStyle={"none"}>
+    <List.Root
+      listStyle={"none"}
+    >
       {data.map((g) => (
         <ListItem key={g.id}>
           <HStack>
