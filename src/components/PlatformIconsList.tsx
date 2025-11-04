@@ -3,10 +3,9 @@ import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
 
-import { HStack, Icon } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { type Platform } from '../hooks/useGames'
 import type { IconType } from 'react-icons';
-import React from 'react';
 
 
 interface PlatformIconProps {

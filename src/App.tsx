@@ -55,7 +55,9 @@ function App() {
         </GridItem>
 
         <GridItem area="main" paddingY={5} w={"full"}>
-          <PlatformSelector onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
           />
           <GameGrid
             selectedGenre={selectedGenre}
