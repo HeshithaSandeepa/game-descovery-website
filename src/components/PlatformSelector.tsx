@@ -25,7 +25,7 @@ const PlatformSelector = ({
   return (
     <>
       <MenuRoot>
-        <MenuTrigger>
+        <MenuTrigger asChild>
           <Button variant={'outline'} size="sm" fontWeight={'bold'}>
             {selectedPlatform ? selectedPlatform.name : 'Select Platform'}
             <TfiArrowCircleDown />

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import type { Genre } from './hooks/useGenre';
 import PlatformSelector from './components/PlatformSelector';
 import type { Platform } from './hooks/usePlatforms';
+import SearchInput from './components/SearchInput';
 
 export interface GameQuery {
   genre: Genre | null;
@@ -66,11 +67,11 @@ function App() {
         <GridItem area="main" paddingY={5} w={'full'}>
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
-            onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+            onSelectedPlatform={(platform) =>
+              setGameQuery({ ...gameQuery, platform })
+            }
           />
-          <GameGrid
-            gameQuery={gameQuery}
-          />
+          <GameGrid gameQuery={gameQuery} />
         </GridItem>
 
         <GridItem area="footer" bg="brown" w={'full'}>
