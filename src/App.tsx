@@ -6,11 +6,11 @@ import { useState } from 'react';
 import type { Genre } from './hooks/useGenre';
 import PlatformSelector from './components/PlatformSelector';
 import type { Platform } from './hooks/usePlatforms';
-import SearchInput from './components/SearchInput';
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  searchText: string;
 }
 
 function App() {
@@ -37,7 +37,11 @@ function App() {
           zIndex={1}
           bg={'black'}
         >
-          <NavBar />
+          <NavBar
+            onSearch={(searchText: string) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </GridItem>
 
         <GridItem

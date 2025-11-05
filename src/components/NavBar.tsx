@@ -2,7 +2,11 @@ import { Heading, HStack } from '@chakra-ui/react';
 import PulsingText from './ui/PulsingText';
 import SearchInput from './SearchInput';
 
-const NavBar = () => {
+interface NavbarProps {
+  onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: NavbarProps) => {
   return (
     <>
       <HStack
@@ -18,7 +22,7 @@ const NavBar = () => {
         >
           <PulsingText />
         </Heading>
-        <SearchInput />
+        <SearchInput onSearch={onSearch} />
       </HStack>
     </>
   );
