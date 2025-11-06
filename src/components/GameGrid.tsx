@@ -1,14 +1,12 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
-import useGames from "../hooks/useGames"
-import GameCard from "./GameCard";
-import GameCardSkeleton from "./GameCardSkeleton";
-import type { GameQuery } from "../App";
+import { SimpleGrid, Text } from '@chakra-ui/react';
+import useGames from '../hooks/useGames';
+import GameCard from './GameCard';
+import GameCardSkeleton from './GameCardSkeleton';
+import type { GameQuery } from '../App';
 
 interface GameGridProps {
-  gameQuery: GameQuery
-
+  gameQuery: GameQuery;
 }
-
 
 const GameGrid = ({ gameQuery }: GameGridProps) => {
   //custom hook-same as useState
@@ -24,19 +22,16 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         gap="40px"
-        padding={"20px"}
+        padding={'20px 20px'}
       >
-        {loading && skeletons.map((skeleton) => (
-          <GameCardSkeleton key={skeleton} />
+        {loading &&
+          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+        {data.map((game) => (
+          <GameCard key={game.id} game={game} />
         ))}
-        {
-          data.map((game) => (
-            <GameCard key={game.id} game={game} />
-          ))
-        }
       </SimpleGrid>
     </>
-  )
-}
+  );
+};
 
-export default GameGrid
+export default GameGrid;
