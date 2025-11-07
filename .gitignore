@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 api-client.ts
 .vscode
+
+.vercel
